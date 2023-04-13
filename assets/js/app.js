@@ -51,26 +51,27 @@ form.addEventListener("submit", async (e) => {
 	const digimon = await response.json()
 
 	let digimonName = document.getElementById("digimonName").value
-	// TODO: fix bad digimon name
 	const name = digimonName[0].toUpperCase() + digimonName.substring(1)
-
 	const getDigimon = digimon.filter((digi) => digi.name === name)
 
 	try {
+		if (getDigimon[0]?.name === undefined) {
+			alert(`Ese digimon no existe!\npor defecto agregaremos a "Angemon"\n busca a otro como "Angewomon"`)
+		}
 		let cardTitle = document.querySelector("#info-digimon .card-title")
-		cardTitle.innerHTML = (getDigimon[0].name).toUpperCase()
+		cardTitle.innerHTML = (getDigimon[0]?.name) || "Angemon"
 
 		let cardLevel = document.getElementById("level")
-		cardLevel.innerHTML = (getDigimon[0].level).toUpperCase()
+		cardLevel.innerHTML = (getDigimon[0]?.level) || "Champion"
 
 		let cardImage = document.querySelector("#info-digimon img")
-		cardImage.setAttribute("src", getDigimon[0].img)
+		cardImage.setAttribute("src", getDigimon[0]?.img || "https://digimon.shadowsmith.com/img/angemon.jpg")
 
 		loadStats()
 		clearText()
 	} catch (err) {
-		console.log(err)
 		clearText()
+		throw new Error(`Something went wrong! check this error => ${err}`)
 	}
 })
 
@@ -83,14 +84,13 @@ favoriteDigimons.addEventListener("click", async () => {
 
 	let digiOne = digimon.filter((digi) => digi.name === "Patamon")
 
-	// an array in case to add more
+	// an array in case to add more favorites
 	const favorites = [digiOne]
 	let fav = document.getElementById("fav")
 	fav.innerHTML = ""
 
 	let acc = ''
-	favorites.forEach((digimon, i) => {
-		console.log(digimon[i])
+	favorites.forEach((digimon) => {
 		let el = `
 		<p class="h5">${digimon[0].name}</p>
 		<img src="${digimon[0].img}" class="d-block w-100" alt="${digimon[0].name}">`

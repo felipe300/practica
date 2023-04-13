@@ -7,7 +7,7 @@ Basic api website
 - [Github](https://github.com/felipe300/practica)
 
 ## TODO
-- [ ] fix if user insert invalid number
+- [X] fix if user insert invalid digimon
 - [X] add another event, modal for favorite digimon
 - [X] add stats bar
 - [ ] create a gh-pages branch and outthe site online

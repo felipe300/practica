@@ -51,7 +51,7 @@
 				<form id="digimonForm">
 					<div class="mb-3">
 						<label for="digimonName" class="form-label">Nombre del Digimon</label>
-						<input type="text" class="form-control" id="digimonName" placeholder="agumon">
+						<input type="text" class="form-control" id="digimonName" placeholder="koromon" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Buscar</button>
 				</form>
@@ -59,16 +59,14 @@
 			<!-- FORM END -->
 			<!-- INFO DIGIMON -->
 			<section id="info-digimon">
-				<!-- <h2 class="text-center">Detalles del pokemon</h2> -->
 				<div class="d-flex justify-content-center">
 					<!-- CARD -->
 					<div class="card" styles="width: 18rem">
 						<img src="./assets/img/digimon.jpeg" class="card-img-top" alt="pokemon">
 						<div class="card-body">
 							<h5 class="card-title">Nombre del Digimon</h5>
-							<h6>Level</h6>
+							<h6 id="level">Level</h6>
 							<div id="stats"></div>
-							<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 						</div>
 						<!-- CARD END -->
 					</div>
@@ -82,7 +80,6 @@
 			<p>All rights reverved &#169;</p>
 		</footer>
 		<!-- FOOTER END -->
-
 	</body>
 
 </html>

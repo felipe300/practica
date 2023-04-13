@@ -8,6 +8,6 @@ Basic api website
 
 ## TODO
 - [ ] fix if user insert invalid number
-- [ ] add another event
+- [X] add another event, modal for favorite digimon
 - [X] add stats bar
 - [ ] create a gh-pages branch and outthe site online

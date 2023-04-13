@@ -33,13 +33,27 @@
 							<a class="nav-link active" aria-current="page" href="/">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">About</a>
+							<a class="nav-link" href="#" id="favoriteDigimons" data-bs-toggle="modal"
+								data-bs-target="#digimonModal">Favorite Digimon</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<!-- NAVBAR END -->
+		<!-- MODAL -->
+		<div class="modal fade" id="digimonModal" tabindex="-1" aria-labelledby="digimonModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id ="fav"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL END -->
 		<!-- MAIN -->
 		<header>
 			<h1 class="text-center py-3 text-uppercase" id="mainTitle">Digimon</h1>

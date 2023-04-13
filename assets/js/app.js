@@ -1,3 +1,41 @@
+function loadStats () {
+	const randomNumber = (min, max) => Math.random() * (max - min) + min
+
+	var chart = new CanvasJS.Chart("chartContainer", {
+		theme: "light2", // "light1", "light2", "dark1"
+		animationEnabled: true,
+		exportEnabled: true,
+		title: {
+			text: "Stats"
+		},
+		axisX: {
+			margin: 10,
+			labelPlacement: "inside",
+			tickPlacement: "inside"
+		},
+		axisY2: {
+			title: "Views (points)",
+			titleFontSize: 14,
+			includeZero: true,
+			suffix: "pts"
+		},
+		data: [{
+			type: "bar",
+			axisYType: "secondary",
+			yValueFormatString: "#,###.##points",
+			indexLabel: "{y}",
+			dataPoints: [
+				{ label: "Mana", y: randomNumber(10, 150) },
+				{ label: "Defense", y: randomNumber(10, 150) },
+				{ label: "Attack", y: randomNumber(10, 150) },
+				{ label: "HP", y: randomNumber(80, 150) }
+			]
+		}]
+	})
+	chart.render()
+
+}
+
 const mainTitle = document.getElementById("mainTitle")
 const form = document.getElementById("digimonForm")
 
@@ -7,15 +45,16 @@ function clearText () {
 
 form.addEventListener("submit", async (e) => {
 	e.preventDefault()
-	let digimonName = document.getElementById("digimonName").value
 
 	const url = `https://digimon-api.vercel.app/api/digimon`
 	const response = await fetch(url)
 	const digimon = await response.json()
+
+	let digimonName = document.getElementById("digimonName").value
 	// TODO: fix bad digimon name
 	const name = digimonName[0].toUpperCase() + digimonName.substring(1)
 
-	const getDigimon = digimon.filter((digi) => digi.name === name ? digi : '')
+	const getDigimon = digimon.filter((digi) => digi.name === name)
 
 	try {
 		let cardTitle = document.querySelector("#info-digimon .card-title")
@@ -27,17 +66,10 @@ form.addEventListener("submit", async (e) => {
 		let cardImage = document.querySelector("#info-digimon img")
 		cardImage.setAttribute("src", getDigimon[0].img)
 
-		// let stats = document.getElementById("stats")
-		// stats.innerHTML = ""
-
-		// let acc = ""
-		// digimon.stats.forEach((stat) => {
-		// 	let el = `<p>${stat.stat.name} => ${stat.base_stat}</p>`
-		// 	acc += el
-		// })
-		// stats.innerHTML += acc
+		loadStats()
 		clearText()
 	} catch (err) {
 		console.log(err)
+		clearText()
 	}
 })

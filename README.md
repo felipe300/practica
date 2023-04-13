@@ -7,5 +7,7 @@ Basic api website
 - [Github](https://github.com/felipe300/practica)
 
 ## TODO
-- [x]: fix if user inser invalid number
-- [x]: add another event
+- [ ] fix if user insert invalid number
+- [ ] add another event
+- [X] add stats bar
+- [ ] create a gh-pages branch and outthe site online

@@ -98,3 +98,43 @@ favoriteDigimons.addEventListener("click", async () => {
 	})
 	fav.innerHTML += acc
 })
+
+const digimonDropdownForm = document.getElementById("digimonDropdownForm")
+
+digimonDropdownForm.addEventListener("click", async (e) => {
+	e.preventDefault()
+
+	const url = `https://digimon-api.vercel.app/api/digimon`
+	const response = await fetch(url)
+	const digimon = await response.json()
+
+	let digimonValue = document.getElementById("digimonDropdown")
+
+	digimon.forEach((digi) => {
+		let el = document.createElement("option")
+		el.textContent = digi.name
+		digimonValue.appendChild(el)
+	})
+
+
+	try {
+		const getDigimon = digimon.filter((digi) => digi.name === digimonValue.value)
+		if (getDigimon[0]?.name === undefined) {
+			alert(`Ese digimon no existe!\npor defecto agregaremos a "Angemon"\n busca a otro como "Angewomon"`)
+		}
+		let cardTitle = document.querySelector("#info-digimon .card-title")
+		cardTitle.innerHTML = (getDigimon[0]?.name) || "Angemon"
+
+		let cardLevel = document.getElementById("level")
+		cardLevel.innerHTML = (getDigimon[0]?.level) || "Champion"
+
+		let cardImage = document.querySelector("#info-digimon img")
+		cardImage.setAttribute("src", getDigimon[0]?.img || "https://digimon.shadowsmith.com/img/angemon.jpg")
+
+		loadStats()
+		clearText()
+	} catch (err) {
+		clearText()
+		throw new Error(`Something went wrong! check this error => ${err}`)
+	}
+})

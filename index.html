@@ -48,7 +48,7 @@
 					<div class="modal-header">
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-body" id ="fav"></div>
+					<div class="modal-body" id="fav"></div>
 				</div>
 			</div>
 		</div>
@@ -64,10 +64,19 @@
 				<h2 class="text-center">Buscar Digimon</h2>
 				<form id="digimonForm">
 					<div class="mb-3">
-						<label for="digimonName" class="form-label">Nombre del Digimon</label>
+						<label for="digimonName" class="form-label">Buscar por el nombre del Digimon</label>
 						<input type="text" class="form-control" id="digimonName" placeholder="koromon" required>
 					</div>
 					<button type="submit" class="btn btn-primary">Buscar</button>
+				</form>
+				<form id="digimonDropdownForm" class="mt-2">
+					<label for="digimonName" class="form-label">Buscar en el listado</label>
+					<div class="input-group">
+						<select class="form-select" id="digimonDropdown" aria-label="Example select with button addon">
+
+						</select>
+						<button class="btn btn-outline-secondary" type="button">Buscar</button>
+					</div>
 				</form>
 			</section>
 			<!-- FORM END -->
